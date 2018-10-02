@@ -18,7 +18,9 @@ export class DashboardComponent implements OnInit {
 
   getFilms(): void {
     this.filmService.top3Fils()
-      .subscribe(films => this.films = films.slice(0, 3));
+      .subscribe(films => this.films = films
+        .sort((x1, x2) => x1.rate < x2.rate)
+        .slice(0, 3));
   }
 
 }
