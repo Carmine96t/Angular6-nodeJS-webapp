@@ -1,0 +1,13 @@
+ <div id="search-component"> 
+ 
+  <div class="form-group has-search">
+    <span class="fa fa-search form-control-feedback"></span>
+    <input type="text" class="form-control"  #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="Search film.." autofocus>
+  </div>
+
+  <div id="search_result" class="list-group">
+    <a *ngFor="let film of films$ | async"
+        routerLink="/detail/{{film.id}}"
+        class="list-group-item list-group-item-action">{{film.title}} </a>
+  </div>
+ </div>

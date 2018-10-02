@@ -1,0 +1,25 @@
+
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Film title.." aria-label="Recipient's username" aria-describedby="basic-addon2" #filmTitle>
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" (click)="add(filmTitle.value); filmTitle.value=''">Add New Film</button>
+  </div>
+</div>
+
+
+
+<ul class="list-group">
+  <li *ngFor="let film of films" class="list-group-item list-group-item-light">
+    <label> <a routerLink="/detail/{{film.id}}">{{film.title}}</a></label>
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="delete(film)" title="delete film">
+  		<span aria-hidden="true">&times;</span>
+  	</button>
+    <br>
+	<ngb-rating [(rate)]="film.rate"  [readonly]="true"></ngb-rating>
+  </li>
+</ul>
+<!-- <app-film-detail [film]="selectedFilm"></app-film-detail> -->
+
+
+

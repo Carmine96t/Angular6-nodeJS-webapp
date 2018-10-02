@@ -1,0 +1,14 @@
+<div class="grid grid-pad">
+	 <div class="row">
+	  <div class="col-sm-4" *ngFor="let film of films">
+	    <div class="card">
+	      <div class="card-body">
+	        <h5 class="card-title" ><a routerLink="/detail/{{film.id}}">{{film.title}}</a></h5>
+			<br>
+			<ngb-rating [(rate)]="film.rate"  [readonly]="true"></ngb-rating>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+<app-film-search></app-film-search>

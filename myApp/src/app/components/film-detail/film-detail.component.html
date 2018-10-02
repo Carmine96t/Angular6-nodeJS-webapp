@@ -1,0 +1,35 @@
+<div *ngIf="film">
+<!-- <div class="container"> -->
+<!-- 	  <h2 class="display-4">{{film.title | uppercase}} Details</h2> -->
+<!-- 	  <div> -->
+<!-- 	    <label>title: -->
+<!-- 	      <input [(ngModel)]="film.title" placeholder="title"/> -->
+<!-- 	    </label> -->
+<!-- 	    <br> -->
+<!-- 	    <label>Rating: -->
+<!-- 		<ngb-rating [(rate)]="film.rate"  [readonly]="false"></ngb-rating> -->
+<!-- 		</label> -->
+<!-- 		<br> -->
+<!-- 		<button class="btn btn-outline-secondary" (click)="goBack()">go back</button> -->
+<!-- 		<button class="btn btn-outline-secondary" (click)="save()">save</button> -->
+<!-- 	  </div> -->
+<!-- </div> -->
+	<div class="container-fluid">
+		<div class="card">
+		  <div class="card-body">
+		    <h5 class="card-title">{{film.title | uppercase}}</h5>
+		    <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Title</span>
+			  </div>
+			  <input type="text" class="form-control"  [(ngModel)]="film.title" placeholder="title" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+			<ngb-rating [(rate)]="film.rate"  [readonly]="false"></ngb-rating>
+			<br>
+			<br>
+			<button class="btn btn-outline-secondary" (click)="goBack()">go back</button>
+			<button class="btn btn-outline-secondary" (click)="save()">save</button>
+		  </div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<div *ngIf="messageService.messages">
+
+<!--   <h2>Messages</h2> -->
+<!--   <button class="clear" -->
+<!--           (click)="messageService.clear()">clear</button> -->
+<!--   <div *ngFor='let message of messageService.messages'> {{message}} </div> -->
+
+	<div class="input-group">
+	  <div class="input-group-prepend">
+	    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="clear" (click)="messageService.clear()">
+		  Messages
+		</button>
+	  </div>
+	  <textarea class="form-control" aria-label="With textarea" disabled="disabled">{{messageService.messages}} </textarea>
+	</div>
+
+
+</div>
