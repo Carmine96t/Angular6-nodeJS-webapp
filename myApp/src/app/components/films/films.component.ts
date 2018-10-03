@@ -36,8 +36,8 @@ export class FilmsComponent implements OnInit {
     title = title.trim();
     if (!title) {return;}
     this.filmService.addFilm({id: this.films.length + 1, title: title, rate: 0} as Film)
-      .subscribe(hero => {
-        this.films.push(hero);
+      .subscribe(film => {
+        this.films.push(film);
       });
   }
 

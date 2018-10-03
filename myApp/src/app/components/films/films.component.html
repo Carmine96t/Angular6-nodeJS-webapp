@@ -9,7 +9,7 @@
 
 
 
-<ul class="list-group">
+<ul class="list-group" (change)="getFilms();">
   <li *ngFor="let film of films" class="list-group-item list-group-item-light">
     <label> <a routerLink="/detail/{{film.id}}">{{film.title}}</a></label>
   	<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="delete(film)" title="delete film">
@@ -20,6 +20,3 @@
   </li>
 </ul>
 <!-- <app-film-detail [film]="selectedFilm"></app-film-detail> -->
-
-
-

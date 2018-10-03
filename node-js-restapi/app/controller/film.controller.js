@@ -15,10 +15,33 @@ let mysql = require('mysql');
 exports.create = (req, res) => {
 	// Save to MySQL database
 	let film = req.body;
-	Film.create(film).then(result => {
+
+	let connection = mysql.createConnection(CONSTANS.MAIN_CONNECTION);
+
+	connection.connect();
+
+	let title = req.params.filmTitle;
+
+	let sql = CONSTANS.INSERT.FILM.replace('pi_title', film.title);
+
+	sql = sql.replace('pi_title', film.title);
+
+	//let sql = "call sys.get_film_by_title('"+req.params.filmTitle+"')";
+
+	connection.query(sql, (error, results, fields) => {
+		  if (error) {
+		    console.error(error.message);
+		  }
+		  console.log('Executing: '+sql);
+			res.send(film);
+		});
+
+		connection.end();
+
+	//Film.create(film).then(result => {
 		// Send created film to client
-		res.json(result);
-	});
+		//res.json(result);
+	//});
 };
 
 // Fetch all films
@@ -39,17 +62,19 @@ exports.findById = (req, res) => {
 exports.top3films = (req, res) => {
 	let connection = mysql.createConnection(CONSTANS.MAIN_CONNECTION);
 
-	let sql = CONSTANS.QUERYS.TOP_3_FILMS; 
-	
+	let sql = CONSTANS.QUERYS.TOP_3_FILMS;
+
+	connection.connect();
+
 	connection.query(sql, true, (error, results, fields) => {
 		  if (error) {
+				connection.end();
 		    return console.error(error.message);
 		  }
-		  console.log('Executing (default): '+sql);
+		  console.log('Executing: '+sql);
+			connection.end();
 		  return res.json(results);
 		});
-		 
-	connection.end();
 };
 
 exports.findByTitle = (req, res) => {
@@ -60,19 +85,21 @@ exports.findByTitle = (req, res) => {
 
 	let sql = CONSTANS.PROCEDURES.GET_FILM_BY_NAME;
 
-	sql.repeat
+	sql = sql.replace('pi_title', title);
 
-	//let sql = "call sys.get_film_by_title('"+req.params.filmTitle+"')"; 
-	
+	connection.connect();
+
+	//let sql = "call sys.get_film_by_title('"+req.params.filmTitle+"')";
+
 	connection.query(sql, true, (error, results, fields) => {
 		  if (error) {
+				connection.end();
 		    return console.error(error.message);
 		  }
-		  console.log('Executing (default): '+sql);
+		  console.log('Executing: '+sql);
+			connection.end();
 		  return res.json(results[0]);
 		});
-		 
-	connection.end();
 };
 
 // Update a film
