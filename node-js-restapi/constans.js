@@ -10,7 +10,8 @@ exports.INSERT = {
 }
 
 exports.QUERYS = {
-    TOP_3_FILMS : "SELECT `id`, `title`, `rate`, `createdAt`, `updatedAt` FROM films WHERE RATE >= 8; "
+    TOP_3_FILMS : "SELECT `id`, `title`, `rate`, `createdAt`, `updatedAt` FROM films WHERE RATE >= 8;",
+		GET_FILM_BY_ID : "SELECT * FROM FILMS WHERE ID = 'pi_id';"
 }
 
 exports.PROCEDURES = {

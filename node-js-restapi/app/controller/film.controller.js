@@ -1,11 +1,5 @@
 const db = require('../config/db.config.js');
 const Film = db.films;
-const main_connection = {
-	host : 'localhost',
-	user : 'root',
-	password : 'root',
-	database : 'sys'
-};
 
 let CONSTANS = require("../../constans.js");
 
@@ -26,8 +20,6 @@ exports.create = (req, res) => {
 
 	sql = sql.replace('pi_title', film.title);
 
-	//let sql = "call sys.get_film_by_title('"+req.params.filmTitle+"')";
-
 	connection.query(sql, (error, results, fields) => {
 		  if (error) {
 		    console.error(error.message);
@@ -37,11 +29,6 @@ exports.create = (req, res) => {
 		});
 
 		connection.end();
-
-	//Film.create(film).then(result => {
-		// Send created film to client
-		//res.json(result);
-	//});
 };
 
 // Fetch all films
@@ -54,9 +41,24 @@ exports.findAll = (req, res) => {
 
 // Find a film by Id
 exports.findById = (req, res) => {
-	Film.findById(req.params.filmId).then(film => {
-		res.json(film);
-	})
+	let sql = CONSTANS.QUERYS.GET_FILM_BY_ID;
+	let film_id = req.params.filmId;
+	sql = sql.replace('pi_id', film_id);
+
+	let connection = mysql.createConnection(CONSTANS.MAIN_CONNECTION);
+
+	connection.connect();
+
+	connection.query(sql, true, (error, results, fields) => {
+		  if (error) {
+				connection.end();
+		    return console.error(error.message);
+		  }
+		  console.log('Executing: '+sql);
+			connection.end();
+		  return res.json(results[0]);
+		});
+
 };
 
 exports.top3films = (req, res) => {
