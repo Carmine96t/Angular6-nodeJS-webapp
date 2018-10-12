@@ -1,0 +1,11 @@
+{
+  "HOME": {
+    "SELECT": "Cambia lingua",
+    "DASHBOARD" : "VETRINA",
+    "FILMS": "FILM"
+  },
+  "FILM": {
+    "TITLE": "inserisci un titolo..",
+    "ADD_FILM" : "Aggiungi film"
+  }
+}

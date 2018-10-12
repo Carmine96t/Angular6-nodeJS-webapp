@@ -1,0 +1,11 @@
+{
+  "HOME": {
+    "SELECT": "Change Language",
+    "DASHBOARD" : "DASHBOARD",
+    "FILMS": "FILMS"
+  },
+  "FILM": {
+    "TITLE": "insert film's title..",
+    "ADD_FILM" : "Add new film"
+  }
+}
