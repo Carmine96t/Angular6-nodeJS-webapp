@@ -2,8 +2,7 @@
   <a class="nav-link" routerLink="/dashboard">{{ 'HOME.DASHBOARD' | translate}}</a>
   <a class="nav-link" routerLink="/films">{{ 'HOME.FILMS' | translate}}</a>
   <label class="nav-item" >
-    {{ 'HOME.SELECT' | translate }}
-    <select #langSelect (change)="translate.use(langSelect.value)">
+    <select #langSelect class="form-control" (change)="translate.use(langSelect.value)">
       <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
     </select>
   </label>

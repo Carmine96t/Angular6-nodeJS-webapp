@@ -6,6 +6,9 @@
   },
   "FILM": {
     "TITLE": "insert film's title..",
-    "ADD_FILM" : "Add new film"
+    "ADD_FILM" : "Add new film",
+    "SAVE" : "Save",
+    "BACK" : "Go back",
+    "SEARCH": "Search Films..."
   }
 }

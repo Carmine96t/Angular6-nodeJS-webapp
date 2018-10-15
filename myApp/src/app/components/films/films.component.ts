@@ -35,7 +35,7 @@ export class FilmsComponent implements OnInit {
   add(title: string): void {
     title = title.trim();
     if (!title) {return;}
-    this.filmService.addFilm({id: this.films.length + 1, title: title, rate: 0} as Film)
+    this.filmService.addFilm({title: title, rate: 0} as Film)
       .subscribe(film => {
         this.films.push(film);
       });
@@ -43,10 +43,10 @@ export class FilmsComponent implements OnInit {
 
 
   delete(film: Film): void {
-    this.films = this.films.filter(h => h !== film);
-    this.filmService.deleteFilm(film).subscribe();
+    if(confirm("Are you sure to delete '"+film.title+"'??")) {
+      this.films = this.films.filter(h => h !== film);
+      this.filmService.deleteFilm(film).subscribe();
+    }
+
   }
-
-
-
 }

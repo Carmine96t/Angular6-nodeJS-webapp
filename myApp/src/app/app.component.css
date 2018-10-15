@@ -1,0 +1,6 @@
+body.English :lang(Italian) {
+  display: none;
+}
+body.Italian :lang(English){
+  display: none;
+}

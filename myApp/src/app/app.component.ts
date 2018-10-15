@@ -10,10 +10,10 @@ export class AppComponent {
   title = 'Film Tour';
 
   constructor(public translate: TranslateService) {
-    translate.addLangs(['en', 'it']);
-    translate.setDefaultLang('en');
+    translate.addLangs(['English', 'Italian']);
+    translate.setDefaultLang('English');
 
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|it/) ? browserLang : 'en');
+    translate.use(browserLang.match(/English|Italian/) ? browserLang : 'English');
   }
 }

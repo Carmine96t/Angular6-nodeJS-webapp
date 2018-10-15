@@ -8,10 +8,10 @@
 </div>
 
 
-
+<div class="container-fluid">
 <ul class="list-group" (change)="getFilms();">
-  <li *ngFor="let film of films | paginate: { itemsPerPage: 100, currentPage: p }" class="list-group-item list-group-item-light">
-    <label> <a routerLink="/detail/{{film.id}}">{{film.title}}</a></label>
+  <li *ngFor="let film of films | paginate: { itemsPerPage: 10, currentPage: p }" class="list-group-item list-group-item-light" >
+    <label routerLink="/detail/{{film.id}}"> {{film.title}}</label>
   	<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="delete(film)" title="delete film">
   		<span aria-hidden="true">&times;</span>
   	</button>
@@ -19,4 +19,7 @@
 	<ngb-rating [(rate)]="film.rate"  [readonly]="true"></ngb-rating>
   </li>
 </ul>
+<pagination-controls style="position: 'centrate';"(pageChange)="p = $event"></pagination-controls>
+</div>
+
 <!-- <app-film-detail [film]="selectedFilm"></app-film-detail> -->

@@ -16,7 +16,7 @@ exports.create = (req, res) => {
 
 	let title = req.params.filmTitle;
 
-	let sql = CONSTANS.INSERT.FILM.replace('pi_title', film.title);
+	let sql = CONSTANS.INSERT.FILM;
 
 	sql = sql.replace('pi_title', film.title);
 
@@ -24,8 +24,7 @@ exports.create = (req, res) => {
 		  if (error) {
 		    console.error(error.message);
 		  }
-		  console.log('Executing: '+sql);
-			res.send(film);
+		  console.log('Executing: '+sql);	
 		});
 
 		connection.end();
