@@ -16,18 +16,26 @@ exports.create = (req, res) => {
 
 	let title = req.params.filmTitle;
 
-	let sql = CONSTANS.INSERT.FILM;
+	let sql = CONSTANS.INSERT.FILM.replace('pi_title', film.title);
 
 	sql = sql.replace('pi_title', film.title);
+
+	//let sql = "call sys.get_film_by_title('"+req.params.filmTitle+"')";
 
 	connection.query(sql, (error, results, fields) => {
 		  if (error) {
 		    console.error(error.message);
 		  }
-		  console.log('Executing: '+sql);	
+		  console.log('Executing: '+sql);
+			res.send({ id: results.insertId, title: film.title, rate: film.rate });
 		});
 
 		connection.end();
+
+	//Film.create(film).then(result => {
+		// Send created film to client
+		//res.json(result);
+	//});
 };
 
 // Fetch all films
@@ -40,24 +48,9 @@ exports.findAll = (req, res) => {
 
 // Find a film by Id
 exports.findById = (req, res) => {
-	let sql = CONSTANS.QUERYS.GET_FILM_BY_ID;
-	let film_id = req.params.filmId;
-	sql = sql.replace('pi_id', film_id);
-
-	let connection = mysql.createConnection(CONSTANS.MAIN_CONNECTION);
-
-	connection.connect();
-
-	connection.query(sql, true, (error, results, fields) => {
-		  if (error) {
-				connection.end();
-		    return console.error(error.message);
-		  }
-		  console.log('Executing: '+sql);
-			connection.end();
-		  return res.json(results[0]);
-		});
-
+	Film.findById(req.params.filmId).then(film => {
+		res.json(film);
+	})
 };
 
 exports.top3films = (req, res) => {

@@ -10,8 +10,12 @@ exports.INSERT = {
 }
 
 exports.DELETE = {
-FILM: "TODO"
+FILM: "DELETE FROM FILMS WHERE ID = pi_id;"
 }
+exports.UPDATE = {
+FILM: "UPDATE FILMS SET TITLE = 'pi_title', RATE = pi_rate WHERE ID = pi_id;"
+}
+
 
 exports.QUERYS = {
     TOP_3_FILMS : "SELECT `id`, `title`, `rate`, `createdAt`, `updatedAt` FROM films WHERE RATE >= 8;",
