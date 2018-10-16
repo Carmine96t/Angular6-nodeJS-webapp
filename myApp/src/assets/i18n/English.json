@@ -9,6 +9,8 @@
     "ADD_FILM" : "Add new film",
     "SAVE" : "Save",
     "BACK" : "Go back",
-    "SEARCH": "Search Films..."
+    "SEARCH": "Search Films...",
+    "DELETE": "Delete film",
+    "DETAIL": "Film detail"
   }
 }

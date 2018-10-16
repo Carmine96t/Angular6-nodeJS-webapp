@@ -11,8 +11,10 @@
 <div class="container-fluid">
 <ul class="list-group" (change)="getFilms();">
   <li *ngFor="let film of films | paginate: { itemsPerPage: 10, currentPage: p }" class="list-group-item list-group-item-light" >
-    <label routerLink="/detail/{{film.id}}"> {{film.title}}</label>
-  	<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="delete(film)" title="delete film">
+    <label routerLink="/detail/{{film.id}}" title="{{ 'FILM.DETAIL' | translate }}">
+    {{film.title}}
+    </label>
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="delete(film)" title="{{ 'FILM.DELETE' | translate }}" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
   		<span aria-hidden="true">&times;</span>
   	</button>
     <br>
