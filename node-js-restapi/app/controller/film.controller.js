@@ -9,33 +9,33 @@ let mysql = require('mysql');
 exports.create = (req, res) => {
 	// Save to MySQL database
 	let film = req.body;
+	//
+	// let connection = mysql.createConnection(CONSTANS.MAIN_CONNECTION);
+	//
+	// connection.connect();
+	//
+	// let title = req.params.filmTitle;
+	//
+	// let sql = CONSTANS.INSERT.FILM.replace('pi_title', film.title);
+	//
+	// sql = sql.replace('pi_title', film.title);
+	//
+	// //let sql = "call sys.get_film_by_title('"+req.params.filmTitle+"')";
+	//
+	// connection.query(sql, (error, results, fields) => {
+	// 	  if (error) {
+	// 	    console.error(error.message);
+	// 	  }
+	// 	  console.log('Executing: '+sql);
+	// 		res.send({ id: results.insertId, title: film.title, rate: film.rate });
+	// 	});
+	//
+	// 	connection.end();
 
-	let connection = mysql.createConnection(CONSTANS.MAIN_CONNECTION);
-
-	connection.connect();
-
-	let title = req.params.filmTitle;
-
-	let sql = CONSTANS.INSERT.FILM.replace('pi_title', film.title);
-
-	sql = sql.replace('pi_title', film.title);
-
-	//let sql = "call sys.get_film_by_title('"+req.params.filmTitle+"')";
-
-	connection.query(sql, (error, results, fields) => {
-		  if (error) {
-		    console.error(error.message);
-		  }
-		  console.log('Executing: '+sql);
-			res.send({ id: results.insertId, title: film.title, rate: film.rate });
-		});
-
-		connection.end();
-
-	//Film.create(film).then(result => {
-		// Send created film to client
-		//res.json(result);
-	//});
+	Film.create(film).then(result => {
+		//Send created film to client
+		res.json(result);
+	});
 };
 
 // Fetch all films
